@@ -4,8 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
+    <!-- outfit and sans font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Manrope:wght@200..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- font awesome cdn -->
+     <script src="https://kit.fontawesome.com/0a4b9bcbe6.js" crossorigin="anonymous"></script>
+
+    <!-- daisy UI -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <!-- tailwind added -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- tailwind config or customization css -->
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+                fontFamily:{
+                    primaryfont:['"Outfit", sans-serif']
+                },
+                Colors:{
+                    textColor: "#08080880"
+                }
+            }
+          }
+        }
+    </script>
 </head>
-<body>
-    <h2>This is Home page</h2>
+<body class="box-border">
+    <section class="border border-solid border-[#0808081a] p-2 flex justify-between items-center mx-auto px-10">
+        <!-- This is logo and balance div -->
+        <div class="flex items-center p-2">
+            <!-- logo div -->
+            <div>
+                <img src="./assets/Group.png" alt="" class="h-12 mr-1">
+            </div>
+            <!-- balance div -->
+            <div>
+                <h1 class="text-lg font-[primaryfont] font-bold">$<span>45000</span></h1>
+                <p class="text-[#08080880] font-normal font-[primaryfont] text-sm">Available Balance</p>
+            </div>
+        </div>
+
+        <!-- This is logout button div -->
+        <div>
+            <button class="btn border border-solid border-[#0808081a] p-3 text-[#08080880] font-normal font-[primaryfont] text-sm rounded-lg ">
+                <i class="fa-solid fa-arrow-up-from-bracket -rotate-90"></i>Log Out
+            </button>
+        </div>
+    </section>
 </body>
 </html>
