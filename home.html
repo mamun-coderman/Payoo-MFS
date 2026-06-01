@@ -44,22 +44,22 @@
         
                 <!-- This is logo and balance div -->
                 <div class="flex items-center p-2">
-               <!-- logo div -->
-               <div>
-                   <img src="./assets/Group.png" alt="" class="h-12 mr-1">
-               </div>
-               <!-- balance div -->
-               <div>
-                   <h1 class="text-lg font-[primaryfont] font-bold">$<span>45000</span></h1>
-                   <p class="text-[#08080880] font-normal font-[primaryfont] text-sm">Available Balance</p>
-               </div>
+                    <!-- logo div -->
+                    <div>
+                        <img src="./assets/Group.png" alt="" class="h-12 mr-1">
+                    </div>
+                    <!-- balance div -->
+                    <div>
+                        <h1 class="text-lg font-[primaryfont] font-bold">$<span>45000</span></h1>
+                        <p class="text-[#08080880] font-normal font-[primaryfont] text-sm">Available Balance</p>
+                    </div>
                 </div>
             
                 <!-- This is logout button div -->
                 <div>
-               <button class="btn border border-solid border-[#0808081a] p-3 text-[#08080880] font-normal font-[primaryfont] text-sm rounded-lg ">
-                   <i class="fa-solid fa-arrow-up-from-bracket -rotate-90"></i>Log Out
-               </button>
+                    <button id="logout-btn" class="btn border border-solid border-      [#0808081a] p-3 text-[#08080880] font-normal font-[primaryfont]        text-sm rounded-lg ">
+                        <i class="fa-solid fa-arrow-up-from-bracket -rotate-90"></i>Log Out
+                    </button>
                 </div>
             </section>
         
@@ -75,7 +75,7 @@
             <!-- card section -->
             <section class="cards grid grid-cols-3 gap-4 px-6">
                 <!-- add money card -->
-                <div class="flex flex-col gap-2 justify-center items-center border  border-solid border-[#0808081a] rounded-xl py-5 px-2.5">
+                <div id="add-money" class="flex flex-col gap-2 justify-center items-center border  border-solid border-[#0808081a] rounded-xl py-5 px-2.5">
                     <img src="./assets/wallet1.png" alt="">
                     <p class="text-[#080808b3] font-normal font-[primaryfont] text-sm">Add Money</p>
                 </div>
@@ -108,7 +108,7 @@
          </div>
 
          <!-- add money form section -->
-        <section class="mx-6 mt-8 ">
+        <section id="add-money-form" class="mx-6 mt-8 hidden">
             <h2 class="text-lg font-[primaryfont] font-semibold text-[#080808] mb-4">Add Money</h2>
             <div class="flex flex-col  bg-[#fff] p-8 rounded-3xl ">
                 <label for="add-amount" class="text-base font-medium font-primaryfont text-[#080808b3] ">Select A Bank</label>
@@ -141,7 +141,7 @@
         </section>
 
         <!-- Cashout section -->
-        <section class="mx-6 mt-8 ">
+        <section class="mx-6 mt-8 hidden">
             <h2 class="text-lg font-[primaryfont] font-semibold text-[#080808] mb-4">Cash Out</h2>
             <div class="flex flex-col  bg-[#fff] p-8 rounded-3xl ">
                 <label for="cash-out-agent-number" class="text-base font-medium font-primaryfont text-[#080808b3]">Agent Number</label>
@@ -164,7 +164,7 @@
         </section>
 
         <!-- Transfer Money section -->
-        <section class="mx-6 mt-8 ">
+        <section class="mx-6 mt-8 hidden">
             <h2 class="text-lg font-[primaryfont] font-semibold text-[#080808] mb-4">Transfer Money</h2>
             <div class="flex flex-col  bg-[#fff] p-8 rounded-3xl ">
                 <label for="" class="text-base font-medium font-primaryfont text-[#080808b3]">User Account Number</label>
@@ -187,7 +187,7 @@
         </section>
 
         <!-- Get Bonus section -->
-        <section class="mx-6 mt-8 ">
+        <section class="mx-6 mt-8 hidden">
             <h2 class="text-lg font-[primaryfont] font-semibold text-[#080808] mb-4">Get Bonus</h2>
             <div class="flex flex-col  bg-[#fff] p-8 rounded-3xl ">
                 <label for="" class="text-base font-medium font-primaryfont text-[#080808b3]">Enter Bonus Coupon</label>
@@ -201,7 +201,7 @@
         </section>
 
         <!-- Pay Bill section -->
-        <section class="mx-6 mt-8 ">
+        <section class="mx-6 mt-8 hidden">
             <h2 class="text-lg font-[primaryfont] font-semibold text-[#080808] mb-4">Pay Bill</h2>
             <div class="flex flex-col  bg-[#fff] p-8 rounded-3xl ">
                 <label for="add-amount" class="text-base font-medium font-primaryfont text-[#080808b3] ">Select To Pay</label>
@@ -232,6 +232,17 @@
                 <button id="add-money-btn" class="btn btn-block rounded-full bg-[#0874f2] text-[#fff] text-xl font-primaryfont ">Pay Now</button>
             </div>
         </section>
+
+        <!-- transaction history section added -->
+        <section class="mx-6 mt-8 hidden">
+            <div>
+                <h2 class="text-lg font-[primaryfont] font-semibold text-[#080808] mb-4">Transaction History</h2>
+            </div>
+            
+        </section>
     </main>
+
+
+    <script src="./js/home.js"></script>
 </body>
 </html>
