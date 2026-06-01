@@ -121,9 +121,9 @@
                 </select>
 
 
-                <label for="account-number" class="text-base font-medium font-primaryfont text-[#080808b3]">Bank Account Number</label>
+                <label for="add-money-account-number" class="text-base font-medium font-primaryfont text-[#080808b3]">Bank Account Number</label>
 
-                <input type="text" placeholder="Enter 11 digit account number" id="account-number" class="py-2 px-5 rounded-full bg-[#f4f5f7] border-0 mt-3 mb-4 font-primaryfont ">
+                <input type="text" placeholder="Enter 11 digit account number" id="add-money-account-number" class="py-2 px-5 rounded-full bg-[#f4f5f7] border-0 mt-3 mb-4 font-primaryfont ">
 
 
                 <label for="add-amount" class="text-base font-medium font-primaryfont text-[#080808b3] ">Amount to Add</label>
@@ -137,6 +137,29 @@
                 <br>
 
                 <button id="add-money-btn" class="btn btn-block rounded-full bg-[#0874f2] text-[#fff] text-xl font-primaryfont ">Add Money</button>
+            </div>
+        </section>
+
+        <!-- Cashout section -->
+        <section class="mx-6 mt-8 ">
+            <h2 class="text-lg font-[primaryfont] font-semibold text-[#080808] mb-4">Cash Out</h2>
+            <div class="flex flex-col  bg-[#fff] p-8 rounded-3xl ">
+                <label for="cash-out-agent-number" class="text-base font-medium font-primaryfont text-[#080808b3]">Agent Number</label>
+
+                <input type="text" placeholder="Enter 11 digit number" id="cash-out-agent-number" class="py-2 px-5 rounded-full bg-[#f4f5f7] border-0 mt-3 mb-4 font-primaryfont ">
+
+
+                <label for="add-amount" class="text-base font-medium font-primaryfont text-[#080808b3] ">Amount</label>
+
+                <input type="text" placeholder="Enter amount to withdraw" id="add-amount" class="py-2 px-5 rounded-full bg-[#f4f5f7] border-0 mt-3 mb-4 font-primaryfont ">
+
+
+                <label for="pin-number" class="text-base font-medium font-primaryfont text-[#080808b3] ">Pin Number</label>
+                <input type="password" placeholder="Enter 4 digit pin number" id="pin-number" class="py-2 px-5 rounded-full bg-[#f4f5f7] border-0 mt-3 font-primaryfont ">
+
+                <br>
+
+                <button id="add-money-btn" class="btn btn-block rounded-full bg-[#0874f2] text-[#fff] text-xl font-primaryfont ">withdraw Money</button>
             </div>
         </section>
     </main>
