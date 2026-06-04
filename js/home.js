@@ -1,11 +1,34 @@
 // all js code for home page are written here
 
-// logout button event listener
+//some common reusable functions
+
+//inner text
+function getText(id) {
+    return document.getElementById(id).innerText;
+} 
+
+// inner text converted to number
+function getTextToNum(id) {
+    return parseInt(document.getElementById(id).innerText);
+}
+
+// getting input value
+function getValue(id) {
+    return document.getElementById(id).value;
+}
+
+//getting input value converted to number
+function getValueNumber(id) {
+    return parseInt(document.getElementById(id).value);
+}
+
+
+//// logout button event listener
 document.getElementById("logout-btn").addEventListener("click", function(){
     window.location.replace("./index.html");
 } )
 
-// card section event listener 
+//// card section event listener 
 // toggling function
 function togglingCard(cardId, formId) {
     const cardToClick = document.getElementById(cardId)
@@ -48,3 +71,10 @@ togglingCard("pay-bill-card", "pay-bill-form");
 
 // toggling function calling for transaction history
 togglingCard("transaction-card", "transaction-form");
+
+
+//// add money form event listener
+
+document.getElementById("add-money-btn").addEventListener("click", function() {
+    console.log(getTextToNum("displayed-balance"));
+})
