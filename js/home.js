@@ -22,6 +22,13 @@ function getValueNumber(id) {
     return parseInt(document.getElementById(id).value);
 }
 
+// reusable function making ends here
+
+
+
+
+
+
 
 //// logout button event listener
 document.getElementById("logout-btn").addEventListener("click", function(){
@@ -73,8 +80,99 @@ togglingCard("pay-bill-card", "pay-bill-form");
 togglingCard("transaction-card", "transaction-form");
 
 
-//// add money form event listener
+//// add money form 
 
+ // storing all accounts here on a variable
+const accounts = [
+        {
+            bank: "Islami Bank",
+            accountNumber: "12345678901",
+            pinNumber: "2341"
+        },
+
+        {
+            bank: "AB Bank",
+            accountNumber: "23456789012",
+            pinNumber: "3412"
+        },
+
+        {
+            bank: "Sonali Bank",
+            accountNumber: "34567890123",
+            pinNumber: "4123"
+        }
+    ]
+
+// event listener added to form button
 document.getElementById("add-money-btn").addEventListener("click", function() {
-    console.log(getTextToNum("displayed-balance"));
+    
+    // top displayed balance value selecting
+    const balanceToDisplay = getTextToNum("displayed-balance");
+    
+    // selecting and getting value of bank select option
+    const selectedBank = getValue("bank-select");
+
+    // selecting and getting value of input account number
+    const selectedAccount =  getValue("add-money-account-number");
+
+    // input value of amount selecting
+    const addingAmount = getValueNumber("add-amount");
+
+    //selecting and getting value of input pin number
+    const selectedPin = getValue("pin-number");
+
+
+    //alert message validation for input field
+    if(!selectedBank){
+        alert("Please select a Bank");
+        return;
+    }
+    if(selectedAccount.length !== 11){
+        alert("Account number must be 11 digits");
+        return;
+    }
+    if(isNaN(addingAmount) || addingAmount <= 0) {
+        alert("Enter valid amount");
+        return;
+    }
+    if(selectedPin.length != 4) {
+        alert("Pin must be 4 digits");
+        return;
+    }
+        
+    
+
+
+    // account varification
+    const validAccount = accounts.find(account =>
+        (account.bank === selectedBank) && 
+        (account.accountNumber === selectedAccount) && 
+        (account.pinNumber === selectedPin)
+    );
+
+    // alert message for invalid account information
+    if(!validAccount) {
+        alert("Invalid account information");
+        return;
+    }
+
+    // Update balance
+    const currentBalance = balanceToDisplay + addingAmount;
+
+    document.getElementById("displayed-balance").innerText = currentBalance;
+
+
+    // clear input fields
+    document.getElementById("bank-select").selectedIndex = 0;
+
+    document.getElementById("add-money-account-number").value = "";
+
+    document.getElementById("add-amount").value = "";
+
+    document.getElementById("pin-number").value = "";
+
+
+    // alert message for successfull transaction
+    alert(` ${addingAmount} tk successfully added to your account`);
+
 })
