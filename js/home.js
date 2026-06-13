@@ -123,6 +123,11 @@ document.getElementById("add-money-btn").addEventListener("click", function() {
 
 
     //alert message validation for input field
+    if(!selectedBank || !selectedAccount || !addingAmount || !selectedPin) {
+        alert("Please fill all required fields");
+        return;
+    }
+
     if(!selectedBank){
         alert("Please select a Bank");
         return;
