@@ -1,6 +1,6 @@
 // all js code for home page are written here
 
-//some common reusable functions
+/////////some common reusable functions
 
 //inner text
 function getText(id) {
@@ -30,12 +30,16 @@ function getValueNumber(id) {
 
 
 
-//// logout button event listener
+///////// logout button event listener
 document.getElementById("logout-btn").addEventListener("click", function(){
     window.location.replace("./index.html");
 } )
 
-//// card section event listener 
+
+
+///////// card section event listener 
+
+
 // toggling function
 function togglingCard(cardId, formId) {
     const cardToClick = document.getElementById(cardId)
@@ -80,26 +84,34 @@ togglingCard("pay-bill-card", "pay-bill-form");
 togglingCard("transaction-card", "transaction-form");
 
 
-//// add money form 
 
- // storing all accounts here on a variable
+
+
+/////////// add money form 
+
+
+ // storing all accounts information here on a variable
 const accounts = [
         {
             bank: "Islami Bank",
-            accountNumber: "12345678901",
-            pinNumber: "2341"
+            bankAccountNumber: "12345678901",
+            agentNumber: "01234567899",
+            pinNumber: "1234"
         },
 
         {
             bank: "AB Bank",
-            accountNumber: "23456789012",
-            pinNumber: "3412"
+            bankAccountNumber: "23456789012",
+            agentNumber: "01234567898",
+            pinNumber: "1234"
         },
 
         {
             bank: "Sonali Bank",
-            accountNumber: "34567890123",
-            pinNumber: "4123"
+            bankAccountNumber: "34567890123",
+            agentNumber: "01234567897",
+            
+            pinNumber: "1234"
         }
     ]
 
@@ -107,40 +119,40 @@ const accounts = [
 document.getElementById("add-money-btn").addEventListener("click", function() {
     
     // top displayed balance value selecting
-    const balanceToDisplay = getTextToNum("displayed-balance");
+    const balanceToDisplayAdd = getTextToNum("displayed-balance");
     
     // selecting and getting value of bank select option
-    const selectedBank = getValue("bank-select");
+    const selectedBankAdd = getValue("bank-select");
 
     // selecting and getting value of input account number
-    const selectedAccount =  getValue("add-money-account-number");
+    const selectedAccountAdd =  getValue("addMoney-accountNumber");
 
     // input value of amount selecting
-    const addingAmount = getValueNumber("add-amount");
+    const amountAdd = getValueNumber("addMoney-amount");
 
     //selecting and getting value of input pin number
-    const selectedPin = getValue("pin-number");
+    const selectedPinAdd = getValue("addMoney-pin");
 
 
     //alert message validation for input field
-    if(!selectedBank || !selectedAccount || !addingAmount || !selectedPin) {
+    if(!selectedBankAdd || !selectedAccountAdd || !amountAdd || !selectedPinAdd) {
         alert("Please fill all required fields");
         return;
     }
 
-    if(!selectedBank){
+    if(!selectedBankAdd){
         alert("Please select a Bank");
         return;
     }
-    if(selectedAccount.length !== 11){
+    if(selectedAccountAdd.length !== 11){
         alert("Account number must be 11 digits");
         return;
     }
-    if(isNaN(addingAmount) || addingAmount <= 0) {
+    if(isNaN(amountAdd) || amountAdd <= 0) {
         alert("Enter valid amount");
         return;
     }
-    if(selectedPin.length != 4) {
+    if(selectedPinAdd.length != 4) {
         alert("Pin must be 4 digits");
         return;
     }
@@ -150,9 +162,9 @@ document.getElementById("add-money-btn").addEventListener("click", function() {
 
     // account varification
     const validAccount = accounts.find(account =>
-        (account.bank === selectedBank) && 
-        (account.accountNumber === selectedAccount) && 
-        (account.pinNumber === selectedPin)
+        (account.bank === selectedBankAdd) && 
+        (account.bankAccountNumber === selectedAccountAdd) && 
+        (account.pinNumber === selectedPinAdd)
     );
 
     // alert message for invalid account information
@@ -162,22 +174,25 @@ document.getElementById("add-money-btn").addEventListener("click", function() {
     }
 
     // Update balance
-    const currentBalance = balanceToDisplay + addingAmount;
+    const currentBalance = balanceToDisplayAdd + amountAdd;
 
     document.getElementById("displayed-balance").innerText = currentBalance;
+
+
 
 
     // clear input fields
     document.getElementById("bank-select").selectedIndex = 0;
 
-    document.getElementById("add-money-account-number").value = "";
+    document.getElementById("addMoney-accountNumber").value = "";
 
-    document.getElementById("add-amount").value = "";
+    document.getElementById("addMoney-amount").value = "";
 
-    document.getElementById("pin-number").value = "";
+    document.getElementById("addMoney-pin").value = "";
 
 
-    // alert message for successfull transaction
-    alert(` ${addingAmount} tk successfully added to your account`);
+     // alert message for successfull transaction
+    alert(` ${amountAdd} tk successfully added to your account`);
+   
 
 })
