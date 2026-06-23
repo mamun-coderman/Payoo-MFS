@@ -94,6 +94,7 @@ const accounts = [
             bankAccountNumber: "12345678901",
             agentNumber: "01234567899",
             userAccount: "11111111111",
+            bonusCoupon: "112233",
             pinNumber: "1234"
         },
 
@@ -102,6 +103,7 @@ const accounts = [
             bankAccountNumber: "23456789012",
             agentNumber: "01234567898",
             userAccount: "11111111111",
+            bonusCoupon: "112233",
             pinNumber: "1234"
         },
 
@@ -110,6 +112,7 @@ const accounts = [
             bankAccountNumber: "34567890123",
             agentNumber: "01234567897",
             userAccount: "11111111111",
+            bonusCoupon: "112233",
             pinNumber: "1234"
         }
     ]
@@ -327,4 +330,40 @@ document.getElementById("transfer-money-btn").addEventListener("click", function
     document.getElementById("userAccount-transfer").value = "";
     document.getElementById("amount-transfer").value = "";
     document.getElementById("pin-transfer").value = "";
+})
+
+
+
+
+
+////////// Bonus coupon form section 
+
+document.getElementById("bonus-btn").addEventListener("click", function() {
+    // top displayed balance value selecting
+    const balanceToDisplay = getTextToNum("displayed-balance");
+
+    // bonus coupon selecting
+    const selectedBonusCoupon = getValue("bonus-coupon");
+
+  
+
+    // coupon varification
+    const validCoupon = accounts.find(account => 
+        account.bonusCoupon === selectedBonusCoupon
+    );
+
+    // alert message for invalid coupon
+    if(!validCoupon) {
+        alert("Wrong Coupon");
+    }
+
+    // balance update
+    const bonusAmount = 10000;
+    const currentBalanceBonus = balanceToDisplay + bonusAmount;
+    document.getElementById("displayed-balance").innerText = currentBalanceBonus;
+
+
+    // clear input
+    document.getElementById("bonus-coupon").value = "";
+
 })
