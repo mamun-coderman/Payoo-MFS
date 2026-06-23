@@ -66,7 +66,7 @@ function togglingCard(cardId, formId) {
 }
 
 // toggling function calling for add money
-togglingCard("add-money", "add-money-form");
+togglingCard("add-money-card", "add-money-form");
 
 // toggling function calling for cash out
 togglingCard("cash-out-card", "cash-out-form");
@@ -87,10 +87,7 @@ togglingCard("transaction-card", "transaction-form");
 
 
 
-/////////// add money form 
-
-
- // storing all accounts information here on a variable
+ //////// storing all accounts information here on a variable
 const accounts = [
         {
             bank: "Islami Bank",
@@ -115,11 +112,16 @@ const accounts = [
         }
     ]
 
+
+
+
+/////////// add money form 
+
 // event listener added to form button
 document.getElementById("add-money-btn").addEventListener("click", function() {
     
     // top displayed balance value selecting
-    const balanceToDisplayAdd = getTextToNum("displayed-balance");
+    const balanceToDisplay = getTextToNum("displayed-balance");
     
     // selecting and getting value of bank select option
     const selectedBankAdd = getValue("bank-select");
@@ -174,9 +176,9 @@ document.getElementById("add-money-btn").addEventListener("click", function() {
     }
 
     // Update balance
-    const currentBalance = balanceToDisplayAdd + amountAdd;
+    const currentBalanceAdd = balanceToDisplay + amountAdd;
 
-    document.getElementById("displayed-balance").innerText = currentBalance;
+    document.getElementById("displayed-balance").innerText = currentBalanceAdd;
 
 
 
@@ -195,4 +197,68 @@ document.getElementById("add-money-btn").addEventListener("click", function() {
     alert(` ${amountAdd} tk successfully added to your account`);
    
 
+})
+
+
+
+
+///////// Cash out form
+
+document.getElementById("cash-out-btn").addEventListener("click", function() {
+    // top displayed balance value selecting
+    const balanceToDisplay = getTextToNum("displayed-balance");
+
+    // agent number input value selecting
+    const selectedAgentNumber = getValue("cash-out-agent-number");
+
+    // cash out amount selecting
+    const selectedAmountCash = getValueNumber("amount-cashout");
+
+    // cash out pin number selecting
+    const selectedPinCash = getValue("cashOut-pin");
+
+
+
+    // alert message validation for cash out form section input field
+    if(!selectedAgentNumber || selectedAgentNumber.length !== 11) {
+        alert("You must enter 11 digit valid account number");
+        return;
+    }
+    if(!selectedAmountCash || isNaN(selectedAmountCash) || selectedAmountCash <= 0) {
+        alert("Enter valid amount to withdrow");
+        return;
+    }
+    if(!selectedPinCash || selectedPinCash.length !== 4) {
+        alert("Enter 4 digit valid pin");
+        return;
+    }
+
+
+    // account varification
+    const validAccount = accounts.find(account =>
+    (account.agentNumber === selectedAgentNumber) &&
+    (account.pinNumber === selectedPinCash)
+    );
+
+    //alert message for account information
+    if(!validAccount) {
+        alert("Invalid account information")
+        return;
+    };
+
+    // alert message for insufficient balance
+    if(selectedAmountCash > balanceToDisplay) {
+        alert("Insufficient balance!")
+    }
+
+
+    // update balance
+    const currentBalanceCash = balanceToDisplay - selectedAmountCash;
+    document.getElementById("displayed-balance").innerText = currentBalanceCash;
+
+
+    //clear input field
+    document.getElementById("cash-out-agent-number").value = "";
+    document.getElementById("amount-cashout").value = "";
+    document.getElementById("cashOut-pin").value = "";
 })

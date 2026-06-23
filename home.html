@@ -75,7 +75,7 @@
             <!-- card section -->
             <section class="cards grid grid-cols-3 gap-4 px-6">
                 <!-- add money card -->
-                <div id="add-money" class="card-area flex flex-col gap-2 justify-center items-center border  border-solid border-[#0808081a] rounded-xl py-5 px-2.5">
+                <div id="add-money-card" class="card-area flex flex-col gap-2 justify-center items-center border  border-solid border-[#0808081a] rounded-xl py-5 px-2.5">
                     <img src="./assets/wallet1.png" alt="">
                     <p class="text-[#080808b3] font-normal font-[primaryfont] text-sm">Add Money</p>
                 </div>
@@ -110,9 +110,9 @@
          <!-- add money form section -->
         <section id="add-money-form" class="form-section mx-6 mt-8 hidden">
             <h2 class="text-lg font-[primaryfont] font-semibold text-[#080808] mb-4">Add Money</h2>
+
             <div class="flex flex-col  bg-[#fff] p-8 rounded-3xl ">
                 <label for="bank-select" class="text-base font-medium font-primaryfont text-[#080808b3] ">Select A Bank</label>
-
                 <select id="bank-select" class="select py-2 px-5 rounded-full bg-[#f4f5f7] border-0 mt-3 mb-4 font-primaryfont w-full">
                     <option disabled selected>Select Bank</option>
                     <option>Islami Bank</option>
@@ -122,12 +122,10 @@
 
 
                 <label for="addMoney-accountNumber" class="text-base font-medium font-primaryfont text-[#080808b3]">Bank Account Number</label>
-
                 <input type="text" placeholder="Enter 11 digit account number" id="addMoney-accountNumber" class="py-2 px-5 rounded-full bg-[#f4f5f7] border-0 mt-3 mb-4 font-primaryfont ">
 
-
+            
                 <label for="addMoney-amount" class="text-base font-medium font-primaryfont text-[#080808b3] ">Amount to Add</label>
-
                 <input type="text" placeholder="Add amount to withdraw" id="addMoney-amount" class="py-2 px-5 rounded-full bg-[#f4f5f7] border-0 mt-3 mb-4 font-primaryfont ">
 
 
@@ -135,7 +133,7 @@
                 <input type="password" placeholder="Enter 4 digit pin number" id="addMoney-pin" class="py-2 px-5 rounded-full bg-[#f4f5f7] border-0 mt-3 font-primaryfont ">
 
                 <br>
-
+                
                 <button id="add-money-btn" class="btn btn-block rounded-full bg-[#0874f2] text-[#fff] text-xl font-primaryfont ">Add Money</button>
             </div>
         </section>
