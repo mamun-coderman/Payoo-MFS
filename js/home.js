@@ -93,6 +93,7 @@ const accounts = [
             bank: "Islami Bank",
             bankAccountNumber: "12345678901",
             agentNumber: "01234567899",
+            userAccount: "11111111111",
             pinNumber: "1234"
         },
 
@@ -100,6 +101,7 @@ const accounts = [
             bank: "AB Bank",
             bankAccountNumber: "23456789012",
             agentNumber: "01234567898",
+            userAccount: "11111111111",
             pinNumber: "1234"
         },
 
@@ -107,7 +109,7 @@ const accounts = [
             bank: "Sonali Bank",
             bankAccountNumber: "34567890123",
             agentNumber: "01234567897",
-            
+            userAccount: "11111111111",
             pinNumber: "1234"
         }
     ]
@@ -261,4 +263,68 @@ document.getElementById("cash-out-btn").addEventListener("click", function() {
     document.getElementById("cash-out-agent-number").value = "";
     document.getElementById("amount-cashout").value = "";
     document.getElementById("cashOut-pin").value = "";
+})
+
+
+
+
+/////// Transfer Money form
+
+document.getElementById("transfer-money-btn").addEventListener("click", function() {
+    // top displayed balance value selecting
+    const balanceToDisplay = getTextToNum("displayed-balance");
+
+    // agent number input value selecting
+    const selectedUserAccount = getValue("userAccount-transfer");
+
+    // cash out amount selecting
+    const selectedAmountTransfer = getValueNumber("amount-transfer");
+
+    // cash out pin number selecting
+    const selectedPinTransfer = getValue("pin-transfer");
+
+
+
+    // alert message validation for cash out form section input field
+    if(!selectedUserAccount || selectedUserAccount.length !== 11) {
+        alert("You must enter 11 digit valid account number");
+        return;
+    }
+    if(!selectedAmountTransfer || isNaN(selectedAmountTransfer) || selectedAmountTransfer <= 0) {
+        alert("Enter valid amount to transfer");
+        return;
+    }
+    if(!selectedPinTransfer || selectedPinTransfer.length !== 4) {
+        alert("Enter 4 digit valid pin");
+        return;
+    }
+
+
+    // account varification
+    const validAccount = accounts.find(account =>
+    (account.userAccount === selectedUserAccount) &&
+    (account.pinNumber === selectedPinTransfer)
+    );
+
+    //alert message for account information
+    if(!validAccount) {
+        alert("Invalid account information")
+        return;
+    };
+
+    // alert message for insufficient balance
+    if(selectedAmountTransfer > balanceToDisplay) {
+        alert("Insufficient balance!")
+    }
+
+
+    // update balance
+    const currentBalanceTransfer = balanceToDisplay - selectedAmountTransfer;
+    document.getElementById("displayed-balance").innerText = currentBalanceTransfer;
+
+
+    //clear input field
+    document.getElementById("userAccount-transfer").value = "";
+    document.getElementById("amount-transfer").value = "";
+    document.getElementById("pin-transfer").value = "";
 })
