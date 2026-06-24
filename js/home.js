@@ -91,27 +91,33 @@ togglingCard("transaction-card", "transaction-form");
 const accounts = [
         {
             bank: "Islami Bank",
+            payment: "Electricity Bill",
             bankAccountNumber: "12345678901",
             agentNumber: "01234567899",
             userAccount: "11111111111",
+            billerAccount: "22222222222",
             bonusCoupon: "112233",
             pinNumber: "1234"
         },
 
         {
             bank: "AB Bank",
+            payment: "Land Tax",
             bankAccountNumber: "23456789012",
             agentNumber: "01234567898",
             userAccount: "11111111111",
+            billerAccount: "22222222222",
             bonusCoupon: "112233",
             pinNumber: "1234"
         },
 
         {
             bank: "Sonali Bank",
+            payment: "Income Tax",
             bankAccountNumber: "34567890123",
             agentNumber: "01234567897",
             userAccount: "11111111111",
+            billerAccount: "22222222222",
             bonusCoupon: "112233",
             pinNumber: "1234"
         }
@@ -365,5 +371,90 @@ document.getElementById("bonus-btn").addEventListener("click", function() {
 
     // clear input
     document.getElementById("bonus-coupon").value = "";
+
+})
+
+
+
+
+
+// pay bill form section
+
+document.getElementById("pay-bill-btn").addEventListener("click", function() {
+    
+    // top displayed balance value selecting
+    const balanceToDisplay = getTextToNum("displayed-balance");
+    
+    // selecting and getting value of payment select option
+    const selectedPayment = getValue("payment-select");
+
+    // selecting and getting value of biller account number
+    const selectedBillerAccount =  getValue("biller-account");
+
+    // input value of amount selecting
+    const amountPaybill = getValueNumber("amount-paybill");
+
+    //selecting and getting value of input pin number
+    const selectedPinPaybill = getValue("paybill-pin");
+
+
+
+    if(!selectedPayment){
+        alert("Please select a Bank");
+        return;
+    }
+    if(!selectedBillerAccount || selectedBillerAccount.length !== 11){
+        alert("Account number must be 11 digits");
+        return;
+    }
+    if(!amountPaybill || isNaN(amountPaybill) || amountPaybill <= 0) {
+        alert("Enter valid amount");
+        return;
+    }
+    if(!selectedPinPaybill || selectedPinPaybill < 0 || selectedPinPaybill.length != 4) {
+        alert("Pin must be 4 digits positive integer");
+        return;
+    }
+        
+    
+
+
+    // account varification
+    const validAccount = accounts.find(account =>
+        (account.payment === selectedPayment) && 
+        (account.billerAccount === selectedBillerAccount) && 
+        (account.pinNumber === selectedPinPaybill)
+    );
+
+    // alert message for invalid account information
+    if(!validAccount) {
+        alert("Invalid account information");
+        return;
+    }
+
+
+    // alert message for insufficient balance
+    if(amountPaybill > balanceToDisplay) {
+        alert("Insufficient Balance");
+        return;
+    }
+
+    // Update balance
+    const currentBalancePaybill = balanceToDisplay - amountPaybill;
+
+    document.getElementById("displayed-balance").innerText = currentBalancePaybill;
+
+
+
+
+    // clear input fields
+    document.getElementById("payment-select").selectedIndex = 0;
+
+    document.getElementById("biller-account").value = "";
+
+    document.getElementById("amount-paybill").value = "";
+
+    document.getElementById("paybill-pin").value = "";
+   
 
 })
