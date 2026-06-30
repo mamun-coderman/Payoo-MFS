@@ -38,7 +38,7 @@
 <body >
     <main class="box-border bg-[#f4f5f7] max-w-lg mx-auto pb-16">
         <!-- top section -->
-         <div class="bg-white pb-6  rounded-b-3xl">
+        <div class="bg-white pb-6  rounded-b-3xl">
             <!-- This is top balance section -->
             <section class="border-b border-solid border-[#0808081a] p-2 flex justify-between items-center mx-auto px-10 my-2">
         
@@ -72,7 +72,7 @@
                 <p class="text-[#08080880] font-normal font-[primaryfont] text-base mt-3">Enjoy easy and convenient financial services with us. Cashout charge is low and </p>
             </section>
 
-            <!-- card section -->
+            <!-- card toggling section -->
             <section class="cards grid grid-cols-3 gap-4 px-6">
                 <!-- add money card -->
                 <div id="add-money-card" class="card-area flex flex-col gap-2 justify-center items-center border  border-solid border-[#0808081a] rounded-xl py-5 px-2.5">
@@ -105,7 +105,7 @@
                     <p class="text-[#080808b3] font-normal font-[primaryfont] text-sm">Transaction</p>
                 </div>
             </section>
-         </div>
+        </div>
 
          <!-- add money form section -->
         <section id="add-money-form" class="form-section mx-6 mt-8 hidden">
@@ -231,10 +231,15 @@
             </div>
         </section>
 
-        <!-- transaction history section added -->
+        <!-- transaction history section added   -->
         <section id="transaction-form" class="form-section mx-6 mt-8 hidden">
-            <div>
+            <div class="flex justify-between ">
                 <h2 class="text-lg font-[primaryfont] font-semibold text-[#080808] mb-4">Transaction History</h2>
+                <a href="#" class="text-[#08080880] font-normal font-[primaryfont] text-base">View All</a>
+            </div>
+
+            <div id="transaction-container">
+                
             </div>
             
         </section>

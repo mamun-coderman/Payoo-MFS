@@ -22,6 +22,10 @@ function getValueNumber(id) {
     return parseInt(document.getElementById(id).value);
 }
 
+
+ 
+
+
 // reusable function making ends here
 
 
@@ -126,6 +130,62 @@ const accounts = [
 
 
 
+
+//////////// Transaction adding and showing to UI is here
+
+
+
+// store all transactions here
+
+const transactionHistory = [];
+
+
+// reusable function for adding transaction
+ function addTransaction(type) {
+    const transaction = {
+        type: type,
+        time: new Date().toLocaleString()
+    }
+
+    transactionHistory.push(transaction);
+
+    showTransactions();
+ }
+
+
+// reusable function for showing transaction
+function showTransactions() {
+    
+    const transactionContainer = document.getElementById("transaction-container");
+    transactionContainer.innerText = "";
+    [...transactionHistory]
+    .reverse()
+    .forEach(transaction => {
+        const div = document.createElement("div");
+        div.classList.add("bg-white", "mb-4", "p-4", "rounded-lg");
+        div.innerHTML = `
+             <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <div class="bg-[#f4f5f7] p-3 rounded-full">
+                        <img src="./assets/transaction1.png" alt="">
+                    </div>
+                    <div>
+                        <h3>${transaction.type}</h3>
+                        <p>${transaction.time}</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+             </div>
+        `
+        transactionContainer.appendChild(div);
+    });
+    
+    
+}
+
+
+
+
 /////////// add money form 
 
 // event listener added to form button
@@ -192,6 +252,8 @@ document.getElementById("add-money-btn").addEventListener("click", function() {
     document.getElementById("displayed-balance").innerText = currentBalanceAdd;
 
 
+    
+
 
 
     // clear input fields
@@ -206,6 +268,10 @@ document.getElementById("add-money-btn").addEventListener("click", function() {
 
      // alert message for successfull transaction
     alert(` ${amountAdd} tk successfully added to your account`);
+
+
+    // add money transaction added to transaction history
+    addTransaction("Add Money");
    
 
 })
@@ -253,13 +319,14 @@ document.getElementById("cash-out-btn").addEventListener("click", function() {
 
     //alert message for account information
     if(!validAccount) {
-        alert("Invalid account information")
+        alert("Invalid account information");
         return;
     };
 
     // alert message for insufficient balance
     if(selectedAmountCash > balanceToDisplay) {
-        alert("Insufficient balance!")
+        alert("Insufficient balance!");
+        return;
     }
 
 
@@ -272,7 +339,16 @@ document.getElementById("cash-out-btn").addEventListener("click", function() {
     document.getElementById("cash-out-agent-number").value = "";
     document.getElementById("amount-cashout").value = "";
     document.getElementById("cashOut-pin").value = "";
+
+
+    // cash out transaction added to transaction history
+    addTransaction("Cash Out");
+
+
 })
+
+
+
 
 
 
@@ -286,15 +362,15 @@ document.getElementById("transfer-money-btn").addEventListener("click", function
     // agent number input value selecting
     const selectedUserAccount = getValue("userAccount-transfer");
 
-    // cash out amount selecting
+    // transfer money amount selecting
     const selectedAmountTransfer = getValueNumber("amount-transfer");
 
-    // cash out pin number selecting
+    // transfer money pin number selecting
     const selectedPinTransfer = getValue("pin-transfer");
 
 
 
-    // alert message validation for cash out form section input field
+    // alert message validation for transfer money form section input field
     if(!selectedUserAccount || selectedUserAccount.length !== 11) {
         alert("You must enter 11 digit valid account number");
         return;
@@ -323,7 +399,8 @@ document.getElementById("transfer-money-btn").addEventListener("click", function
 
     // alert message for insufficient balance
     if(selectedAmountTransfer > balanceToDisplay) {
-        alert("Insufficient balance!")
+        alert("Insufficient balance!");
+        return;
     }
 
 
@@ -336,6 +413,13 @@ document.getElementById("transfer-money-btn").addEventListener("click", function
     document.getElementById("userAccount-transfer").value = "";
     document.getElementById("amount-transfer").value = "";
     document.getElementById("pin-transfer").value = "";
+
+
+
+    // transfer money transaction added to transaction history
+    addTransaction("Transfer Money");
+
+
 })
 
 
@@ -361,6 +445,7 @@ document.getElementById("bonus-btn").addEventListener("click", function() {
     // alert message for invalid coupon
     if(!validCoupon) {
         alert("Wrong Coupon");
+        return;
     }
 
     // balance update
@@ -371,6 +456,10 @@ document.getElementById("bonus-btn").addEventListener("click", function() {
 
     // clear input
     document.getElementById("bonus-coupon").value = "";
+
+
+    // Bonus Coupon transaction added to transaction history
+    addTransaction("Bonus Coupon");
 
 })
 
@@ -455,6 +544,11 @@ document.getElementById("pay-bill-btn").addEventListener("click", function() {
     document.getElementById("amount-paybill").value = "";
 
     document.getElementById("paybill-pin").value = "";
+
+
+
+    // Pay Bill transaction added to transaction history
+    addTransaction("Pay Bill");
    
 
 })
