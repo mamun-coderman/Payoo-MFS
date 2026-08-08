@@ -14,7 +14,7 @@ document.getElementById("login-btn").addEventListener("click", function(event) {
     let inputPin = document.getElementById("pin-number").value;
 
     // compare both mobile number and pin equality
-    if( (mobileNumber === inputMobileNumber) && (password === inputPin) ) {
+    if( (mobileNumber === inputMobileNumber) && (password === inputPin.trim()) ) {
         window.location.href="./home.html";
         }
     else{
