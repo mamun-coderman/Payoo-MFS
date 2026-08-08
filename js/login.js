@@ -6,7 +6,7 @@ document.getElementById("login-btn").addEventListener("click", function(event) {
     event.preventDefault();
     // pre-stored mobile number and pin
     const mobileNumber = "01515295665";
-    const password = "1234";
+    const password = "mamun";
 
     // input mobile number and pin selection
     let inputMobileNumber = document.getElementById("mobile-number").value;
